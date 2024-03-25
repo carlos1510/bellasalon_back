@@ -20,7 +20,7 @@ export async function createUser(username: string, password: string, email: stri
       [username, password, email, name])).rows[0];
 }
 
-export async function updateUser(id: number, password: string, email: string, name:string): Promise<User> {
+export async function updateUser(id: number, name: string, username: string, email: string, password: string): Promise<User> {
   return (await pool.query(
     "UPDATE users SET password=$1, email=$2, name=$3 WHERE id=$4 RETURNING *",
     [password, email, name, id]
